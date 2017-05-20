@@ -8,7 +8,7 @@ import java.time.*;
  * @version 20.05.17.
  */
 
-public class J1HW4 {
+public class J1HW5 {
 
     public static void main(String[] args) {
 
@@ -45,7 +45,9 @@ public class J1HW4 {
                 "18000",
                 "35"));
 
-        arrayStaff.forEach( (if (x.getAge() > 40)) -> x.printEmployee() );
+        for (Employee employee: arrayStaff) {
+            if (employee.getAge() > 40) employee.printEmployee();
+        }
 
     }
 }
@@ -73,7 +75,7 @@ class Employee {
         this.phone 		= phone;
         this.salary 	= salary;
         this.age 		= age;
-        this.stamp		= Year.now();
+        this.stamp		= Year.now();  // Year.of(2010);
     }
 
     void printEmployee() {
@@ -82,13 +84,12 @@ class Employee {
         System.out.println(email);
         System.out.println(phone);
         System.out.println(salary);
-        System.out.println(age);
+        System.out.println(getAge());
     }
 
     int getAge() {
         int buffer = Integer.parseInt(this.age);
         Year now = Year.now();
-        int actualAge = buffer + (now.getValue() - this.stamp.getValue());
-        return actualAge;
+        return buffer + (now.getValue() - this.stamp.getValue());
     }
 }
